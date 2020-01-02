@@ -1,14 +1,8 @@
 import random
+import math
 
 
-def main():
-    pass
-
-
-if __name__ == "__main__":
-    main()
-
-
+# Take user input
 def ask_user_info():
     age = input('What is your age?\n')
     name = input('What is your name?\n')
@@ -36,12 +30,14 @@ def test():
     print(num)
 
 
+# For loop variations
 def print_shit():
     for i in range(1, 22):
         if i % 2 != 0:
             print(i)
 
 
+# Flow controls
 def guess_number():
     secret_number = 7
     while True:
@@ -53,6 +49,7 @@ def guess_number():
             print('Please try again!')
 
 
+# String functions
 def string_functions(string):
     new = []
     for c in string:
@@ -62,9 +59,6 @@ def string_functions(string):
         else:
             new.append(c.lower())
     return ''.join(new)
-
-
-print(string_functions("Hello, testing new function"))
 
 
 def hide_string():
@@ -85,16 +79,17 @@ def hide_string():
 # hide_string()
 
 
+# Logical thinking, messing with Uni-codes
 def caesar_cypher():
     message = input("Please enter a message: ")
     unit_shift = int(input("Please enter the key to be shifted from 1 to 26 (a - z): "))
-    encrypted_message = cipher_helper(message, unit_shift)
+    encrypted_message = __cipher_helper(message, unit_shift)
 
-    print(f"The encrypted message is: {cipher_helper(message, unit_shift)}")
-    print(f"The decrypted message is: {cipher_helper(encrypted_message, -unit_shift)}")
+    print(f"The encrypted message is: {__cipher_helper(message, unit_shift)}")
+    print(f"The decrypted message is: {__cipher_helper(encrypted_message, -unit_shift)}")
 
 
-def cipher_helper(message, unit_shift) -> str:
+def __cipher_helper(message, unit_shift) -> str:
     new_message = ""
     for char in message:
         # Convert the character at i index message into Unicode and add unit shift to it
@@ -119,7 +114,146 @@ def cipher_helper(message, unit_shift) -> str:
     return new_message
 
 
-caesar_cypher()
+# caesar_cypher()
 
 
+def __get_prime(num) -> list:
+    new = []
+    for i in range(1, num, 2):
+        if __is_prime(i):
+            new.append(i)
+    return new
 
+
+def __is_prime(num) -> bool:
+    for i in range(2, num):
+        if (num % i) == 0:
+            return False
+
+    return True
+
+
+def test_prime():
+    num = int(input("Please enter number: "))
+    list_of_prime = __get_prime(num)
+    for i in list_of_prime:
+        print(i)
+
+
+def find_smallest(list_num) -> int:
+    smallest_so_far = None
+    for i in list_num:
+        if i < smallest_so_far:
+            smallest_so_far = i
+    return smallest_so_far
+
+
+def find_largest(list_num) -> int:
+    largest_so_far = -1
+    for i in list_num:
+        if i > largest_so_far:
+            largest_so_far = i
+    return largest_so_far
+
+
+def get_shape():
+    shape = input("Enter the shape: ").lower()
+    if shape == "rectangle":
+        __rectangle_area()
+    elif shape == "circle":
+        __circle_area()
+    elif shape == "parallelogram":
+        __parallelogram_area()
+    elif shape == "trapezoid":
+        __trapezoid_area()
+
+
+def __trapezoid_area():
+    a_base = float(input("Enter the base of a: "))
+    b_base = float(input("Enter the base of b: "))
+    height = float(input("Enter the height of the trapezoid: "))
+    area = ((a_base + b_base) / 2) * height
+
+    print(f"The area of the trapezoid is {area:.2f}")
+
+
+def __rectangle_area():
+    height = float(input("Enter the height of the rectangle: "))
+    width = float(input("Enter the width of the rectangle: "))
+    area = height * width
+
+    print(f"The area of the rectangle is: {area:.2f}")
+
+
+def __circle_area():
+    radius = float(input("Enter the radius of the circle: "))
+    area = math.pi * math.pow(radius, 2)
+
+    print(f"The area of the circle is: {area:.2f}")
+
+
+def __parallelogram_area():
+    base = float(input("Enter the base of the parallelogram: "))
+    height = float(input("Enter the height of the parallelogram: "))
+    area = base * height
+
+    print(f"The area of the parallelogram is: {area:.2f}")
+
+
+def random_list():
+    new = []
+    for i in range(5):
+        new.append(random.randrange(1, 9))
+
+    for i in new:
+        print(i)
+
+
+def count_dice():
+    num_rolled = int(input("Enter the number of dice that will be rolled: "))
+    new = []
+    for i in range(num_rolled):
+        new.append(random.randint(1, 6))
+    __count_occurrence(new)
+
+
+def __count_occurrence(arr):
+    dice1, dice2, dice3, dice4, dice5, dice6 = 0, 0, 0, 0, 0, 0
+    for i in arr:
+        if i == 1:
+            dice1 += 1
+        elif i == 2:
+            dice2 += 1
+        elif i == 3:
+            dice3 += 1
+        elif i == 4:
+            dice4 += 1
+        elif i == 5:
+            dice5 += 1
+        else:
+            dice6 += 1
+    result = f"Dice 1: {dice1}\nDice 2: {dice2}\nDice 3: {dice3}\nDice 4: {dice4}\nDice 5: {dice5}\nDice 6: {dice6}"
+    print(result)
+
+
+def bubble_sort(list_arr):
+    for i in range(len(list_arr)):
+        for j in range(0, len(list_arr) - i - 1):
+            if list_arr[j] > list_arr[j + 1]:
+                list_arr[j], list_arr[j + 1] = list_arr[j + 1], list_arr[j]
+
+    for i in list_arr:
+        print(i, end=" ")
+
+
+def main():
+    # test_prime()
+    # print(find_largest([1, 2, 6, 4]))
+    # get_shape()
+    random_list()
+    bubble_sort([4, 5, 2, 3, 1])
+    count_dice()
+
+
+if __name__ == "__main__":
+    main()
