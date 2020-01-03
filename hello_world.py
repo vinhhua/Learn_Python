@@ -89,6 +89,7 @@ def caesar_cypher():
     print(f"The decrypted message is: {__cipher_helper(encrypted_message, -unit_shift)}")
 
 
+# Helper function for caesar_cypher
 def __cipher_helper(message, unit_shift) -> str:
     new_message = ""
     for char in message:
@@ -112,9 +113,6 @@ def __cipher_helper(message, unit_shift) -> str:
             new_message += char
 
     return new_message
-
-
-# caesar_cypher()
 
 
 def __get_prime(num) -> list:
@@ -156,6 +154,7 @@ def find_largest(list_num) -> int:
     return largest_so_far
 
 
+# Flows control and if else statements
 def get_shape():
     shape = input("Enter the shape: ").lower()
     if shape == "rectangle":
@@ -200,6 +199,7 @@ def __parallelogram_area():
     print(f"The area of the parallelogram is: {area:.2f}")
 
 
+# list/ or array in python
 def random_list():
     new = []
     for i in range(5):
@@ -209,6 +209,7 @@ def random_list():
         print(i)
 
 
+# Counting the occurrence in n numbers of dice rolled
 def count_dice():
     num_rolled = int(input("Enter the number of dice that will be rolled: "))
     new = []
@@ -236,14 +237,46 @@ def __count_occurrence(arr):
     print(result)
 
 
+# Bubble sort
 def bubble_sort(list_arr):
+    print(f"The original list is: {list_arr}")
     for i in range(len(list_arr)):
         for j in range(0, len(list_arr) - i - 1):
             if list_arr[j] > list_arr[j + 1]:
                 list_arr[j], list_arr[j + 1] = list_arr[j + 1], list_arr[j]
 
-    for i in list_arr:
-        print(i, end=" ")
+    print(f"The sorted list is: {list_arr}")
+
+
+# Fibonacci with recursion
+def fibonacci(n) -> int:
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    return fibonacci(n - 1) + fibonacci(n - 2)
+
+
+# Fibonacci with dynamic programming technique
+def fibonacci_dp(n) -> int:
+    new = [1, 1]
+
+    for i in range(2, n + 1):
+        new.append((new[i - 2] + new[i - 1]))
+
+    return new[n - 1]
+
+
+# noinspection PyTypeChecker
+def mutlidimensional_list():
+    new = [[0] * 4 for i in range(4)]
+    for i in range(4):
+        for j in range(4):
+            new[i][j] = f"{i}, {j}"
+
+    for i in range(4):
+        for j in range(4):
+            print(new[i][j], end=" || ")
 
 
 def main():
@@ -253,6 +286,9 @@ def main():
     random_list()
     bubble_sort([4, 5, 2, 3, 1])
     count_dice()
+    print(fibonacci(9))
+    print(fibonacci_dp(9))
+    mutlidimensional_list()
 
 
 if __name__ == "__main__":
