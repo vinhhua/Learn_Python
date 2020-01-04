@@ -61,18 +61,18 @@ class SinglyLinkedList(object):
     # TO-DO
     def delete(self, value):
         if self.__is_empty():
-            print("The list is emtpy")
+            print("The list is empty")
             return
+
+        if self.head.data == value:
+            self.head = self.head.next
+            return
+
         current = self.head
         while current.next is not None:
             if current.data == value:
-                break
+                current.next = current.next.next
             current = current.next
-
-        if current.next is None:
-            print("Item not found in the list")
-        else:
-            current.next = current.next.next
 
     # Return the size of the linked list
     @property
