@@ -30,7 +30,7 @@ class Employee(object):
 
     @property
     def get_name(self):
-        return self.__name
+        return self.name
 
     @property
     def get_id(self):
