@@ -17,3 +17,4 @@
 16,22-karat_gold,an alloy that contains 87 per cent gold
 17,24-karat_gold pure_gold,100 per cent gold
 18,24/7,uptime is 24 hours a day 7 days a weekAdd this into the file
+Add this into the file
