@@ -1,5 +1,6 @@
 import random
 import math
+from my_module import find_index
 
 
 # Take user input
@@ -289,6 +290,8 @@ def main():
     print(fibonacci(9))
     print(fibonacci_dp(9))
     mutlidimensional_list()
+    courses = ['Math', 'Art', 'Music', 'Physics', 'CompSci']
+    print(find_index(courses, 'Art'))
 
 
 if __name__ == "__main__":
