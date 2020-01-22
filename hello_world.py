@@ -84,14 +84,14 @@ def hide_string():
 def caesar_cypher():
     message = input("Please enter a message: ")
     unit_shift = int(input("Please enter the key to be shifted from 1 to 26 (a - z): "))
-    encrypted_message = __cipher_helper(message, unit_shift)
+    encrypted_message = _cipher_helper(message, unit_shift)
 
-    print(f"The encrypted message is: {__cipher_helper(message, unit_shift)}")
-    print(f"The decrypted message is: {__cipher_helper(encrypted_message, -unit_shift)}")
+    print(f"The encrypted message is: {_cipher_helper(message, unit_shift)}")
+    print(f"The decrypted message is: {_cipher_helper(encrypted_message, -unit_shift)}")
 
 
 # Helper function for caesar_cypher
-def __cipher_helper(message, unit_shift) -> str:
+def _cipher_helper(message, unit_shift) -> str:
     new_message = ""
     for char in message:
         # Convert the character at i index message into Unicode and add unit shift to it
@@ -116,15 +116,20 @@ def __cipher_helper(message, unit_shift) -> str:
     return new_message
 
 
-def __get_prime(num) -> list:
+"""Methods that start with 1 underscore is private, 2 underscores is protected,
+    Also *args, **kwargs, take all arguments and turn it into a list/ tuple
+    A list is mutable and a tuple is immutable (list can be changed and tuple cannot"""
+
+
+def _get_prime(num) -> list:
     new = []
     for i in range(1, num, 2):
-        if __is_prime(i):
+        if _is_prime(i):
             new.append(i)
     return new
 
 
-def __is_prime(num) -> bool:
+def _is_prime(num) -> bool:
     for i in range(2, num):
         if (num % i) == 0:
             return False
@@ -134,7 +139,7 @@ def __is_prime(num) -> bool:
 
 def test_prime():
     num = int(input("Please enter number: "))
-    list_of_prime = __get_prime(num)
+    list_of_prime = _get_prime(num)
     for i in list_of_prime:
         print(i)
 
@@ -159,16 +164,16 @@ def find_largest(list_num) -> int:
 def get_shape():
     shape = input("Enter the shape: ").lower()
     if shape == "rectangle":
-        __rectangle_area()
+        _rectangle_area()
     elif shape == "circle":
-        __circle_area()
+        _circle_area()
     elif shape == "parallelogram":
-        __parallelogram_area()
+        _parallelogram_area()
     elif shape == "trapezoid":
-        __trapezoid_area()
+        _trapezoid_area()
 
 
-def __trapezoid_area():
+def _trapezoid_area():
     a_base = float(input("Enter the base of a: "))
     b_base = float(input("Enter the base of b: "))
     height = float(input("Enter the height of the trapezoid: "))
@@ -177,7 +182,7 @@ def __trapezoid_area():
     print(f"The area of the trapezoid is {area:.2f}")
 
 
-def __rectangle_area():
+def _rectangle_area():
     height = float(input("Enter the height of the rectangle: "))
     width = float(input("Enter the width of the rectangle: "))
     area = height * width
@@ -185,14 +190,14 @@ def __rectangle_area():
     print(f"The area of the rectangle is: {area:.2f}")
 
 
-def __circle_area():
+def _circle_area():
     radius = float(input("Enter the radius of the circle: "))
     area = math.pi * math.pow(radius, 2)
 
     print(f"The area of the circle is: {area:.2f}")
 
 
-def __parallelogram_area():
+def _parallelogram_area():
     base = float(input("Enter the base of the parallelogram: "))
     height = float(input("Enter the height of the parallelogram: "))
     area = base * height
