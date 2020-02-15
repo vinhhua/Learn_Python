@@ -1,5 +1,6 @@
 import random
 import math
+from random import choice
 from my_module import find_index
 
 
@@ -285,18 +286,46 @@ def mutlidimensional_list():
             print(new[i][j], end=" || ")
 
 
+# Higher order functions, closures
+# Can pass a function into another function
+def sum(n, func):
+    total = 0
+    for i in range(1, n + 1):
+        total += func(i)
+    return total
+
+
+def square(x):
+    return x * x
+
+
+def cube(x):
+    return x * x * x
+
+
+def greet(person):
+    def get_mood():
+        msg = choice(('Hello there ', 'Go away ', 'Fook you '))
+        return msg
+
+    result = get_mood() + person
+    return result
+
+
 def main():
     # test_prime()
     # print(find_largest([1, 2, 6, 4]))
     # get_shape()
-    random_list()
-    bubble_sort([4, 5, 2, 3, 1])
-    count_dice()
-    print(fibonacci(9))
-    print(fibonacci_dp(9))
-    mutlidimensional_list()
-    courses = ['Math', 'Art', 'Music', 'Physics', 'CompSci']
-    print(find_index(courses, 'Art'))
+    # random_list()
+    # bubble_sort([4, 5, 2, 3, 1])
+    # count_dice()
+    # print(fibonacci(9))
+    # print(fibonacci_dp(9))
+    # mutlidimensional_list()
+    # courses = ['Math', 'Art', 'Music', 'Physics', 'CompSci']
+    # print(find_index(courses, 'Art'))
+    print(sum(3, square))
+    print(greet("Hehe"))
 
 
 if __name__ == "__main__":
